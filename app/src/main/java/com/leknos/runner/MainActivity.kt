@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                     sleepTimer?.setSleepHour(sleepHour)
                     sleepTimer?.setSleepMinute(sleepMinute)
                     timeSleep?.text = getString(R.string.sleep_time, timeWithNull(sleepHour), timeWithNull(sleepMinute))
-                    Toast.makeText(this, "You successfully choose sleep time", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "You successfully choose sleep time!", Toast.LENGTH_SHORT).show()
                     if(sleepTimer?.isTimerRunning == true){
                         sleepTimer?.reloadTimer()
                     }
