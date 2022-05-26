@@ -4,11 +4,18 @@ import android.app.TimePickerDialog
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.leknos.runner.Utils.timeWithNull
 import java.util.*
 
@@ -18,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     private var timeToSleep: TextView? = null
     private var timeSleep: TextView? = null
     private var button: ImageButton? = null
+
+    private var mAdView: AdView? = null
 
     companion object{
         const val SLEEP_HOUR_TIME = "hour_time"
@@ -34,6 +43,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        MobileAds.initialize(this) {}
+
+        mAdView = findViewById(R.id.adView)
+        mAdView?.loadAd(AdRequest.Builder().build())
 
         timeToSleep = findViewById(R.id.time_to_sleep)
         timeSleep = findViewById(R.id.time_sleep)
@@ -89,6 +103,7 @@ class MainActivity : AppCompatActivity() {
             changeButtonBackground(sleepTimer!!.isTimerRunning)
         }
         Log.d(TAG, "onCreate")
+
     }
 
     override fun onStop() {

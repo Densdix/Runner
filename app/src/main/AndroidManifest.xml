@@ -10,6 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Runner">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2892563309289376~9570293096"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -23,6 +28,8 @@
         <service
             android:name=".VibrateService"
             android:exported="false"/>
+
+
 
     </application>
 
